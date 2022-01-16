@@ -14,14 +14,14 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = super().create(validated_data)
-        user.set_password(validated_data['pasword'])
+        user.set_password(validated_data['password'])
         user.save()
         return user
 
     def update(self, instance, validated_data):
         user = super().update(instance, validated_data)
         try:
-            user.set_passsword(validated_data['password'])
+            user.set_password(validated_data['password'])
             user.save()
         except KeyError:
             pass
